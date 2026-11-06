@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Creative Engineer & Developer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 transition-colors duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand Logo -->
+                <a href="#hero" class="flex items-center space-x-2 font-bold text-xl tracking-tight text-slate-900 dark:text-white">
+                    <span class="p-2 bg-brand-600 text-white rounded-lg leading-none text-sm"><i class="fa-solid me-1 fa-code"></i>DEV</span>
+                    <span>Alex Chen</span>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center space-x-8 font-medium text-sm text-slate-600 dark:text-slate-300">
+                    <a href="#hero" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">About</a>
+                    <a href="#projects" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Projects</a>
+                    <a href="#skills" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Skills</a>
+                    <a href="#timeline" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Experience</a>
+                    <a href="#contact" class="hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Action Buttons: Theme Toggle & Mobile Menu -->
+                <div class="flex items-center space-x-3">
+                    <!-- Dark/Light Theme Switcher -->
+                    <button id="theme-toggle" aria-label="Toggle Theme" class="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none transition-colors">
+                        <i id="theme-toggle-dark-icon" class="hidden fa-solid fa-moon text-lg"></i>
+                        <i id="theme-toggle-light-icon" class="hidden fa-solid fa-sun text-lg"></i>
+                    </button>
+
+                    <!-- Mobile Drawer Toggle Button -->
+                    <button id="mobile-menu-btn" aria-label="Toggle Mobile Menu" class="md:hidden p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation Overlay -->
+        <div id="mobile-drawer" class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm md:hidden">
+            <div class="fixed inset-y-0 right-0 w-3/4 max-w-xs bg-white dark:bg-slate-900 shadow-xl p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between pb-6 border-b border-slate-200 dark:border-slate-800">
+                        <span class="font-bold text-lg">Navigation</span>
+                        <button id="close-drawer-btn" class="p-2 text-slate-500 hover:text-slate-800 dark:hover:text-white">
+                            <i class="fa-solid fa-xmark text-xl"></i>
+                        </button>
+                    </div>
+                    <nav class="flex flex-col space-y-4 mt-6 font-medium text-slate-700 dark:text-slate-200">
+                        <a href="#hero" class="mobile-nav-link py-2 hover:text-brand-600">About</a>
+                        <a href="#projects" class="mobile-nav-link py-2 hover:text-brand-600">Projects</a>
+                        <a href="#skills" class="mobile-nav-link py-2 hover:text-brand-600">Skills</a>
+                        <a href="#timeline" class="mobile-nav-link py-2 hover:text-brand-600">Experience</a>
+                        <a href="#contact" class="mobile-nav-link py-2 hover:text-brand-600">Contact</a>
+                    </nav>
+                </div>
+                <div class="pt-6 border-t border-slate-200 dark:border-slate-800 flex justify-center space-x-6 text-xl text-slate-500">
+                    <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github hover:text-brand-600"></i></a>
+                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin hover:text-brand-600"></i></a>
+                    <a href="mailto:email@example.com" aria-label="Email"><i class="fa-solid fa-envelope hover:text-brand-600"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+
+        <!-- Hero Section -->
+        <section id="hero" class="py-20 md:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text Intro -->
+                <div class="md:col-span-7 space-y-6 text-center md:text-left">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 border border-brand-200 dark:border-brand-800">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 mr-2 animate-pulse"></span> Open for Engineering Opportunities
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                        Designing software &amp; <span class="text-brand-600 dark:text-brand-500">hardware systems</span> for the future.
+                    </h1>
+                    
+                    <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto md:mx-0 font-normal leading-relaxed">
+                        Hi, I'm Alex. I am a Systems Engineer &amp; Developer specializing in full-stack web applications, mechatronics prototyping, and CAD modeling. I bridge the gap between digital software and physical hardware.
+                    </p>
+                    
+                    <!-- Hero CTAs -->
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
+                        <a href="#projects" class="px-6 py-3 rounded-lg font-semibold bg-brand-600 text-white shadow-md hover:bg-brand-700 transition-colors focus:ring-4 focus:ring-brand-500/30">
+                            View Works <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                        <a href="#contact" class="px-6 py-3 rounded-lg font-semibold bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">
+                            Get in Touch
+                        </a>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div class="flex items-center justify-center md:justify-start space-x-6 pt-4 text-slate-500 dark:text-slate-400 text-xl">
+                        <a href="https://github.com" target="_blank" class="hover:text-slate-900 dark:hover:text-white transition-colors" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="hover:text-slate-900 dark:hover:text-white transition-colors" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="mailto:alex@example.com" class="hover:text-slate-900 dark:hover:text-white transition-colors" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <!-- Hero Image Profile Card -->
+                <div class="md:col-span-5 flex justify-center">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 bg-slate-200 dark:bg-slate-800">
+                        <img src="https://placehold.co/600x600/0284c7/ffffff?text=Alex+Chen" alt="Alex Chen Profile" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section id="projects" class="py-20 bg-slate-100/70 dark:bg-slate-800/40 border-y border-slate-200 dark:border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">Featured Projects</h2>
+                        <p class="mt-2 text-slate-600 dark:text-slate-400">A collection of software applications, mechanical CAD, and embedded builds.</p>
+                    </div>
+
+                    <!-- Category Filter Controls -->
+                    <div class="mt-6 md:mt-0 flex flex-wrap gap-2" id="filter-buttons">
+                        <button data-filter="all" class="filter-btn px-4 py-2 text-sm font-medium rounded-lg bg-brand-600 text-white transition-colors">All</button>
+                        <button data-filter="software" class="filter-btn px-4 py-2 text-sm font-medium rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-brand-500 transition-colors">Software</button>
+                        <button data-filter="engineering" class="filter-btn px-4 py-2 text-sm font-medium rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-brand-500 transition-colors">Engineering</button>
+                        <button data-filter="cad" class="filter-btn px-4 py-2 text-sm font-medium rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-brand-500 transition-colors">CAD &amp; Hardware</button>
+                    </div>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                    
+                    <!-- Project Card 1 -->
+                    <div class="project-card group bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700 flex flex-col" data-category="software">
+                        <div class="relative overflow-hidden aspect-video bg-slate-200 dark:bg-slate-700">
+                            <img src="https://placehold.co/600x400/1e293b/ffffff?text=AI+Dashboard" alt="Project Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-3 right-3 px-2.5 py-1 text-xs font-semibold rounded bg-slate-900/80 text-white backdrop-blur-sm">Software</span>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition-colors">IoT Telemetry Analytics Dashboard</h3>
+                                <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">Real-time data visualization platform processing MQTT sensor streams with interactive graphs and responsive layout controls.</p>
+                            </div>
+                            <div class="mt-6">
+                                <div class="flex flex-wrap gap-1.5 mb-4">
+                                    <span class="px-2 py-0.5 text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">React</span>
+                                    <span class="px-2 py-0.5 text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">Node.js</span>
+                                    <span class="px-2 py-0.5 text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">Tailwind</span>
+                                </div>
+                                <div class="flex items-center space-x-4 border-t border-slate-100 dark:border-slate-700/60 pt-4 text-sm font-medium">
+                                    <button onclick="openModal('modal-1')" class="text-brand-600 hover:text-brand-700 dark:text-brand-400">View Details <i class="fa-solid fa-arrow-right text-xs ml-1"></i></button>
+                                    <a href="https://github.com" target="_blank" class="text-slate-500 hover:text-slate-900 dark:hover:text-white ml-auto"><i class="fa-brands fa-github text-lg"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="project-card group bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700 flex flex-col" data-category="engineering">
+                        <div class="relative overflow-hidden aspect-video bg-slate-200 dark:bg-slate-700">
+                            <img src="https://placehold.co/600x400/0f172a/ffffff?text=Robotic+Arm" alt="Project Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-3 right-3 px-2.5 py-1 text-xs font-semibold rounded bg-slate-900/80 text-white backdrop-blur-sm">Engineering</span>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition-colors">Autonomous Robotic Arm</h3>
+                                <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">A 4-DOF robotic arm engineered with inverse kinematics solver in C++ running on custom printed microcontrollers.</p>
+                            </div>
+                            <div class="mt-6">
+                                <div class="flex flex-wrap gap-1.5 mb-4">
+                                    <span class="px-2 py-0.5 text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">C++</span>
+                                    <span class="px-2 py-0.5 text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">Arduino</span>
+                                    <span class="px-2 py-0.5 text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">Kinematics</span>
+                                </div>
+                                <div class="flex items-center space-x-4 border-t border-slate-100 dark:border-slate-700/60 pt-4 text-sm font-medium">
+                                    <button onclick="openModal('modal-2')" class="text-brand-600 hover:text-brand-700 dark:text-brand-400">View Details <i class="fa-solid fa-arrow-right text-xs ml-1"></i></button>
+                                    <a href="https://github.com" target="_blank" class="text-slate-500 hover:text-slate-900 dark:hover:text-white ml-auto"><i class="fa-brands fa-github text-lg"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3 -->
+                    <div class="project-card group bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700 flex flex-col" data-category="cad">
+                        <div class="relative overflow-hidden aspect-video bg-slate-200 dark:bg-slate-700">
+                            <img src="https://placehold.co/600x400/334155/ffffff?text=Drone+Chassis" alt="Project Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-3 right-3 px-2.5 py-1 text-xs font-semibold rounded bg-slate-900/80 text-white backdrop-blur-sm">CAD &amp; Hardware</span>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition-colors">Lightweight Carbon Drone Chassis</h3>
+                                <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3">Optimized drone frame structural CAD design featuring FEA stress analysis and rapid 3D printing prototyping.</p>
+                            </div>
+                            <div class="mt-6">
+                                <div class="flex flex-wrap gap-1.5 mb-4">
+                                    <span class="px-2 py-0.5 text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">SolidWorks</span>
+                                    <span class="px-2 py-0.5 text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">FEA Analysis</span>
+                                    <span class="px-2 py-0.5 text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">3D Printing</span>
+                                </div>
+                                <div class="flex items-center space-x-4 border-t border-slate-100 dark:border-slate-700/60 pt-4 text-sm font-medium">
+                                    <button onclick="openModal('modal-3')" class="text-brand-600 hover:text-brand-700 dark:text-brand-400">View Details <i class="fa-solid fa-arrow-right text-xs ml-1"></i></button>
+                                    <a href="#" class="text-slate-500 hover:text-slate-900 dark:hover:text-white ml-auto"><i class="fa-solid fa-cube text-lg"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">Technical Skills</h2>
+                <p class="mt-2 text-slate-600 dark:text-slate-400">Core technologies, programming languages, and engineering software tools I work with daily.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Skill Category 1 -->
+                <div class="p-6 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <div class="w-12 h-12 rounded-lg bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Software Development</h3>
+                    <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-sm">
+                        <li class="flex items-center justify-between"><span>JavaScript / TypeScript</span> <span class="font-semibold text-slate-400">Advanced</span></li>
+                        <li class="flex items-center justify-between"><span>Python &amp; Data Analysis</span> <span class="font-semibold text-slate-400">Proficient</span></li>
+                        <li class="flex items-center justify-between"><span>React &amp; HTML/Tailwind</span> <span class="font-semibold text-slate-400">Advanced</span></li>
+                        <li class="flex items-center justify-between"><span>REST APIs &amp; Node.js</span> <span class="font-semibold text-slate-400">Intermediate</span></li>
+                    </ul>
+                </div>
+
+                <!-- Skill Category 2 -->
+                <div class="p-6 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Embedded &amp; Electronics</h3>
+                    <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-sm">
+                        <li class="flex items-center justify-between"><span>C / C++ Embedded</span> <span class="font-semibold text-slate-400">Proficient</span></li>
+                        <li class="flex items-center justify-between"><span>Microcontrollers (ESP32, STM32)</span> <span class="font-semibold text-slate-400">Advanced</span></li>
+                        <li class="flex items-center justify-between"><span>PCB Design (KiCad)</span> <span class="font-semibold text-slate-400">Intermediate</span></li>
+                        <li class="flex items-center justify-between"><span>Serial Protocols (I2C, SPI)</span> <span class="font-semibold text-slate-400">Advanced</span></li>
+                    </ul>
+                </div>
+
+                <!-- Skill Category 3 -->
+                <div class="p-6 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-drafting-compass"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">CAD &amp; Mechanical</h3>
+                    <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-sm">
+                        <li class="flex items-center justify-between"><span>SolidWorks 3D CAD</span> <span class="font-semibold text-slate-400">Advanced</span></li>
+                        <li class="flex items-center justify-between"><span>Fusion 360</span> <span class="font-semibold text-slate-400">Proficient</span></li>
+                        <li class="flex items-center justify-between"><span>FEA Stress Simulation</span> <span class="font-semibold text-slate-400">Intermediate</span></li>
+                        <li class="flex items-center justify-between"><span>FDM / SLA 3D Printing</span> <span class="font-semibold text-slate-400">Advanced</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Education Timeline -->
+        <section id="timeline" class="py-20 bg-slate-100/70 dark:bg-slate-800/40 border-y border-slate-200 dark:border-slate-800">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">Experience &amp; Education</h2>
+                    <p class="mt-2 text-slate-600 dark:text-slate-400">My academic journey and professional milestones.</p>
+                </div>
+
+                <!-- Vertical Timeline Container -->
+                <div class="relative border-l-2 border-slate-300 dark:border-slate-700 ml-4 md:ml-32 space-y-12">
+                    
+                    <!-- Timeline Item 1 -->
+                    <div class="relative pl-8 md:pl-10">
+                        <!-- Left Date Tag for Desktop -->
+                        <div class="hidden md:block absolute -left-36 top-1 text-sm font-bold text-slate-400 text-right w-28">
+                            2024 - Present
+                        </div>
+                        <!-- Marker Icon -->
+                        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs shadow">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                            <span class="md:hidden text-xs font-bold text-brand-600 dark:text-brand-400 block mb-1">2024 - Present</span>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Mechatronics Firmware Developer</h3>
+                            <p class="text-sm text-slate-500 font-medium">Apex Automation Labs</p>
+                            <p class="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                Designing embedded firmware control loops for automated conveyor systems. Optimized sensor sampling rates by 40% and built web dashboards for live telemetry.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="relative pl-8 md:pl-10">
+                        <div class="hidden md:block absolute -left-36 top-1 text-sm font-bold text-slate-400 text-right w-28">
+                            2023 - 2024
+                        </div>
+                        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs shadow">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                            <span class="md:hidden text-xs font-bold text-brand-600 dark:text-brand-400 block mb-1">2023 - 2024</span>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Software Engineering Intern</h3>
+                            <p class="text-sm text-slate-500 font-medium">Nexus Tech Solutions</p>
+                            <p class="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                Built modular React UI components for client web portals. Integrated OAuth2 authentication endpoints and improved accessibility scores across core web pages.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="relative pl-8 md:pl-10">
+                        <div class="hidden md:block absolute -left-36 top-1 text-sm font-bold text-slate-400 text-right w-28">
+                            2020 - 2024
+                        </div>
+                        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs shadow">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                            <span class="md:hidden text-xs font-bold text-brand-600 dark:text-brand-400 block mb-1">2020 - 2024</span>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">B.S. in Systems Engineering</h3>
+                            <p class="text-sm text-slate-500 font-medium">University of Engineering &amp; Technology</p>
+                            <p class="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                Graduated with Honors. Capstone project: Autonomous Obstacle Avoidance Rover using ROS and LiDAR.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                
+                <!-- Contact Direct Info -->
+                <div class="md:col-span-5 space-y-6">
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">Let's Connect</h2>
+                    <p class="text-slate-600 dark:text-slate-400">
+                        I am currently open to new career opportunities, project collaborations, or hardware consultation. Drop me a message!
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 rounded-lg bg-brand-50 dark:bg-brand-900/30 text-brand-600 flex items-center justify-center">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 uppercase font-semibold block">Email</span>
+                                <a href="mailto:alex.chen@example.com" class="text-slate-800 dark:text-slate-200 font-medium hover:text-brand-600">alex.chen@example.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 rounded-lg bg-brand-50 dark:bg-brand-900/30 text-brand-600 flex items-center justify-center">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 uppercase font-semibold block">Location</span>
+                                <span class="text-slate-800 dark:text-slate-200 font-medium">San Francisco, CA / Remote</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Message Form -->
+                <div class="md:col-span-7 bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Your Name</label>
+                                <input type="text" id="name" required class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Your Email</label>
+                                <input type="email" id="email" required class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Message</label>
+                            <textarea id="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 focus:outline-none"></textarea>
+                        </div>
+
+                        <!-- Feedback Message Box -->
+                        <div id="form-alert" class="hidden p-4 rounded-lg text-sm"></div>
+
+                        <button type="submit" class="w-full py-3 px-6 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-semibold shadow transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 py-8 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+            <p>&copy; <span id="year"></span> Alex Chen. Hosted on GitHub Pages.</p>
+            <div class="flex space-x-6">
+                <a href="#hero" class="hover:text-slate-900 dark:hover:text-white">Back to Top</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Detail Modals -->
+    <div id="modal-1" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+        <div class="bg-white dark:bg-slate-800 rounded-xl max-w-2xl w-full p-6 space-y-4 shadow-2xl relative border border-slate-200 dark:border-slate-700 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('modal-1')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">IoT Telemetry Analytics Dashboard</h3>
+            <img src="https://placehold.co/600x300/1e293b/ffffff?text=IoT+Telemetry+System" class="w-full h-48 object-cover rounded-lg">
+            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                This project provides an end-to-end telemetry system for monitoring industrial IoT microcontrollers. Data streams via MQTT to a WebSocket server, visualizing temperature, system pressure, and power consumption specs in real-time.
+            </p>
+            <div class="pt-4 border-t border-slate-200 dark:border-slate-700 flex justify-end">
+                <button onclick="closeModal('modal-1')" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-white rounded-lg text-sm font-semibold">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-2" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+        <div class="bg-white dark:bg-slate-800 rounded-xl max-w-2xl w-full p-6 space-y-4 shadow-2xl relative border border-slate-200 dark:border-slate-700 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('modal-2')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Autonomous Robotic Arm</h3>
+            <img src="https://placehold.co/600x300/0f172a/ffffff?text=Robotic+Arm+Assembly" class="w-full h-48 object-cover rounded-lg">
+            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                A custom fabricated 4-axis pick and place robotic arm driven by stepper motors and inverse kinematics firmware written in C++. Includes object recognition with an OpenCV camera module.
+            </p>
+            <div class="pt-4 border-t border-slate-200 dark:border-slate-700 flex justify-end">
+                <button onclick="closeModal('modal-2')" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-white rounded-lg text-sm font-semibold">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-3" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+        <div class="bg-white dark:bg-slate-800 rounded-xl max-w-2xl w-full p-6 space-y-4 shadow-2xl relative border border-slate-200 dark:border-slate-700 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('modal-3')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Lightweight Carbon Drone Chassis</h3>
+            <img src="https://placehold.co/600x300/334155/ffffff?text=Drone+CAD+Structure" class="w-full h-48 object-cover rounded-lg">
+            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                Structural redesign of a quadcopter chassis optimizing weight-to-strength ratio using SolidWorks FEA simulations. Payload capacity increased by 18% while maintaining structural rigidity.
+            </p>
+            <div class="pt-4 border-t border-slate-200 dark:border-slate-700 flex justify-end">
+                <button onclick="closeModal('modal-3')" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-white rounded-lg text-sm font-semibold">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactivity JavaScript Logic -->
+    <script>
+        // Automatic Copyright Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Dark/Light Theme Switching Logic
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        // Mobile Nav Drawer Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeDrawerBtn = document.getElementById('close-drawer-btn');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleDrawer() {
+            mobileDrawer.classList.toggle('hidden');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleDrawer);
+        closeDrawerBtn.addEventListener('click', toggleDrawer);
+        mobileNavLinks.forEach(link => link.addEventListener('click', toggleDrawer));
+
+        // Project Filter Functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Style Active Filter Button
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-brand-600', 'text-white');
+                    b.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                });
+                btn.classList.add('bg-brand-600', 'text-white');
+                btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+
+                // Filter Cards
+                const filter = btn.getAttribute('data-filter');
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal Open / Close Logic
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        // Contact Form Submission Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const alertBox = document.getElementById('form-alert');
+            alertBox.className = "p-4 rounded-lg text-sm bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300";
+            alertBox.textContent = "Thank you! Your message has been successfully sent (demo).";
+            alertBox.classList.remove('hidden');
+            document.getElementById('contact-form').reset();
+            
+            setTimeout(() => {
+                alertBox.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
