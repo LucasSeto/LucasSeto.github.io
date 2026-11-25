@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Lucas Seto is a Nanotechnology Engineering student at the University of Waterloo with experience in electronics, computational chemistry, architecture, and design.">
-    <meta name="theme-color" content="#0b1220">
+    <meta name="theme-color" content="#f3f2ee">
     <title>Lucas Seto | Nanotechnology Engineering</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -14,12 +14,13 @@
                 extend: {
                     colors: {
                         brand: {
-                            50: '#effcf8',
-                            100: '#d8f8ed',
-                            400: '#4bd6ad',
-                            500: '#20b98b',
-                            600: '#109a73',
-                            700: '#0d795d',
+                            50: '#f5f6f7',
+                            100: '#e8ebee',
+                            300: '#9aa7b3',
+                            400: '#7d8995',
+                            500: '#66727e',
+                            600: '#4c5864',
+                            700: '#343e48',
                         }
                     },
                     fontFamily: {
@@ -41,14 +42,115 @@
             background-size: 32px 32px;
         }
         .project-art { min-height: 190px; }
-        .art-stm { background: radial-gradient(ellipse at 75% 30%, #1c6b68 0, transparent 34%), linear-gradient(135deg, #102b38, #111827 70%); }
-        .art-molecule { background: radial-gradient(ellipse at 45% 50%, #49377f 0, transparent 42%), linear-gradient(135deg, #17162d, #20223b 75%); }
-        .art-transit { background: radial-gradient(ellipse at 70% 40%, #a35632 0, transparent 36%), linear-gradient(135deg, #39271e, #18212b 75%); }
+        .art-stm { background: linear-gradient(145deg, #e7e8e7, #d2d5d6); }
+        .art-molecule { background: linear-gradient(145deg, #e8e9e9, #d4d7da); }
+        .art-transit { background: linear-gradient(145deg, #e9e8e5, #d8d7d3); }
         dialog { color: inherit; }
         dialog::backdrop { background: rgba(2, 6, 23, .72); backdrop-filter: blur(5px); }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
         .dark ::-webkit-scrollbar-thumb { background: #475569; }
+
+        /* Editorial portfolio styling inspired by the reference profile. */
+        :root {
+            --page: #ffffff;
+            --surface: #f8f8f7;
+            --ink: #171717;
+            --muted: #666666;
+            --line: #e4e4e4;
+            --accent: #647487;
+            color-scheme: light;
+        }
+        .dark {
+            --page: #151515;
+            --surface: #1d1d1d;
+            --ink: #f4f4f4;
+            --muted: #b1b1b1;
+            --line: #353535;
+            --accent: #aab6c2;
+            color-scheme: dark;
+        }
+        body { background: var(--page) !important; color: var(--ink); }
+        header { border-color: var(--line) !important; background: color-mix(in srgb, var(--page) 92%, transparent) !important; }
+        header > div { max-width: 1440px; height: 76px; }
+        header a[aria-label="Lucas Seto home"] { letter-spacing: -.04em; }
+        header a[aria-label="Lucas Seto home"] > span:first-child {
+            width: 38px; height: 38px; border-radius: 50%; background: var(--ink) !important;
+            color: var(--page) !important; font-family: 'Inter', sans-serif; font-size: 11px;
+        }
+        header nav a { transition: color .2s ease; }
+        header a[href="#contact"] { background: var(--ink) !important; color: var(--page) !important; border-radius: 3px !important; }
+        #home { background: var(--page); }
+        #home .grid-texture { display: none; }
+        #home > .absolute { display: none; }
+        #home > div.mx-auto { max-width: 1440px; min-height: min(760px, calc(100vh - 76px)); padding-top: clamp(72px, 11vh, 132px); padding-bottom: 96px; }
+        #home .mono:first-child { color: var(--muted) !important; letter-spacing: .12em; }
+        #home .mono:first-child span { background: var(--ink) !important; }
+        #home h1 { max-width: 900px; font-size: clamp(3.6rem, 8vw, 8.5rem); line-height: .94; letter-spacing: -.085em; font-weight: 600; color: var(--ink) !important; }
+        #home h1 span { color: var(--ink) !important; text-decoration: none; }
+        #home .max-w-2xl { color: var(--muted) !important; font-size: clamp(1.05rem, 1.55vw, 1.25rem); line-height: 1.75; }
+        #home a.rounded-full { border-radius: 3px !important; box-shadow: none; }
+        #home a.bg-brand-600 { background: var(--ink) !important; color: var(--page) !important; }
+        #home a.border { background: transparent !important; border-color: var(--line) !important; color: var(--ink) !important; }
+        #home .mt-10.flex { color: var(--muted) !important; }
+        #about { max-width: 390px; }
+        #about > .absolute { display: none; }
+        #about > div.relative { border: 1px solid var(--line) !important; border-radius: 4px !important; background: var(--surface) !important; color: var(--ink) !important; box-shadow: none !important; }
+        #about > div.relative > .absolute { opacity: .04; }
+        #about .rounded-full { border-radius: 50%; }
+        #about .mono, #about .text-slate-400, #about .text-slate-300 { color: var(--muted) !important; }
+        #about .border-brand-400\/40, #about .border-brand-400\/60, #about .border-sky-400\/50, #about .border-violet-400\/40 { border-color: #aeb3b7 !important; }
+        #about .bg-brand-300 { background: #70777c !important; box-shadow: none !important; }
+        #about .border-slate-700 { border-color: var(--line) !important; }
+        #about h2 { color: var(--ink) !important; font-size: 1.7rem; letter-spacing: -.05em; }
+        #work, #skills { background: var(--page) !important; border-color: var(--line) !important; }
+        #work > div, #experience > div, #skills > div { max-width: 1440px; }
+        #work, #experience, #skills { scroll-margin-top: 90px; }
+        #work { border-top: 1px solid var(--line); }
+        #work h2, #experience h2, #skills h2, #contact h2 { color: var(--ink) !important; letter-spacing: -.065em; font-size: clamp(2.4rem, 5vw, 4.5rem); line-height: 1; }
+        #work p:not(.mono), #experience p:not(.mono), #skills p:not(.mono) { color: var(--muted) !important; }
+        #work .filter-btn { border-radius: 3px !important; }
+        #work .filter-btn[aria-pressed="true"] { background: var(--ink) !important; color: var(--page) !important; }
+        #projects-grid { gap: 18px; }
+        .project-card { border-color: var(--line) !important; border-radius: 4px !important; background: var(--surface) !important; box-shadow: none !important; }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 18px 36px #17191512 !important; }
+        .project-art { min-height: 240px; color: #4b5258; }
+        .project-art > span:first-child { color: #555b60 !important; letter-spacing: .12em; }
+        .project-art > span:last-child { background: #ffffffc7 !important; border-color: #ffffff !important; color: #45494d !important; }
+        .art-stm i { color: #58616a !important; }
+        .art-stm > div { border-color: #aeb3b7 !important; background: #ffffff50 !important; box-shadow: none !important; backdrop-filter: none !important; }
+        .art-stm > div > span, .art-transit > div > span { background-color: #879098 !important; border-color: #879098 !important; }
+        .art-molecule > div > span { background: #78838d !important; box-shadow: none !important; }
+        .art-molecule > div > span:nth-child(n+4) { background: #9da5ab !important; }
+        .art-transit i { color: #5c646b !important; }
+        .project-card > div:last-child { padding: 26px; }
+        .project-card h3 { color: var(--ink) !important; letter-spacing: -.045em; font-size: 1.45rem; }
+        .project-card .mono { color: #60656a !important; }
+        .project-card .rounded-full { border-radius: 2px !important; }
+        .project-card button { color: #303a43 !important; }
+        #experience { background: var(--surface); border-block: 1px solid var(--line); }
+        #experience .border-l { border-color: var(--line) !important; }
+        #experience article { padding-bottom: 6px; }
+        #experience article h3 { color: var(--ink) !important; letter-spacing: -.03em; }
+        #experience article .mono { color: #60656a !important; }
+        #skills .rounded-2xl { border-radius: 4px !important; border-color: var(--line) !important; background: var(--surface); }
+        #skills h3 { color: var(--ink) !important; }
+        #skills .mt-6.flex { border-radius: 4px !important; background: transparent !important; border: 1px solid var(--line); }
+        #skills .mt-6.flex span { border-color: var(--line) !important; color: var(--muted) !important; }
+        #contact > div { max-width: 1440px; border: 1px solid var(--line); border-radius: 4px !important; background: var(--surface) !important; color: var(--ink) !important; }
+        #contact h2 { color: var(--ink) !important; }
+        #contact p:not(.mono) { color: var(--muted) !important; }
+        #contact a { border-radius: 3px !important; background: var(--ink) !important; color: var(--page) !important; }
+        footer { border-color: var(--line) !important; }
+        dialog { border-radius: 4px !important; }
+        @media (max-width: 767px) {
+            header > div { height: 64px; }
+            #home > div.mx-auto { min-height: auto; padding-top: 70px; padding-bottom: 76px; }
+            #home h1 { font-size: clamp(3.4rem, 16vw, 6rem); }
+            #about { margin-top: 14px; }
+            .project-art { min-height: 210px; }
+            #work h2, #experience h2, #skills h2, #contact h2 { font-size: 2.75rem; }
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white dark:bg-slate-950 dark:text-slate-100">
@@ -365,15 +467,13 @@
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const storedTheme = localStorage.getItem('color-theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
         function setTheme(isDark) {
             document.documentElement.classList.toggle('dark', isDark);
             themeIcon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
             themeToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
         }
 
-        setTheme(storedTheme ? storedTheme === 'dark' : prefersDark);
+        setTheme(storedTheme ? storedTheme === 'dark' : false);
         themeToggle.addEventListener('click', () => {
             const isDark = !document.documentElement.classList.contains('dark');
             localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
